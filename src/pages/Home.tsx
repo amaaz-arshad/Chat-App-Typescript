@@ -34,7 +34,7 @@ const Home = () => {
   const [chat, setChat] = useState<Users>({});
   const [text, setText] = useState<string>("");
   // @ts-ignore
-  const [img, setImg] = useState<Image>({});
+  const [img, setImg] = useState<Image>("");
   // const [fileName, setfileName] = useState("");
   const [msgs, setMsgs] = useState<Messages[]>([]);
   const [email, setEmail] = useState<string>("");
