@@ -94,8 +94,7 @@ const Home = () => {
         console.log(permission);
         if (permission === "granted") {
           getToken(messaging, {
-            vapidKey:
-              "BLZNfKDSTLQ32jw2Ohf9PcN2tbew1I5Uv9SWX9pUIKD67PFA51yXsWdeny5kHx5twO0JoVRy1GNVsHgFt0uUnQU",
+            vapidKey: process.env.REACT_APP_VAPID_KEY,
           })
             .then((currentToken) => {
               if (currentToken) {
@@ -244,8 +243,7 @@ const Home = () => {
       let options = {
         method: "POST",
         headers: new Headers({
-          Authorization:
-            "key=AAAAG-WmdaM:APA91bFs8ZvZg9vUQTZgC5N601T6PbwL4s0hfxdTWViQ0Wq6sdB0LV-UTuEYjFbPzL3AmP1Zxvqchq2NtfQgKcdzzFzD6vCuwoRi_aZpn5mjTbWpnOb69zhDg6zuxlxK_c1K_bgb3CPN",
+          Authorization: `key=${process.env.REACT_APP_SERVER_KEY}`,
           Accept: "application/json",
           "Content-Type": "application/json",
         }),
