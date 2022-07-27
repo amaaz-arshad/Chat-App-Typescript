@@ -31,7 +31,8 @@ import { Image, Messages, Users } from "../model";
 
 const Home = () => {
   const [users, setUsers] = useState<Users[]>([]);
-  const [chat, setChat] = useState<Users>({});
+  // @ts-ignore
+  const [chat, setChat] = useState<Users>("");
   const [text, setText] = useState<string>("");
   // @ts-ignore
   const [img, setImg] = useState<Image>("");

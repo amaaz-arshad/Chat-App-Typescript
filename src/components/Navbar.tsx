@@ -11,7 +11,7 @@ const Navbar = () => {
   const { user } = useContext<any>(AuthContext);
 
   const handleSignout = async () => {
-    document.cookie = "uid=; expires=" + new Date(2018, 0, 5).toUTCString();
+    // document.cookie = "uid=; expires=" + new Date(2018, 0, 5).toUTCString();
     // @ts-ignore
     await updateDoc(doc(db, "users", auth.currentUser.uid), {
       isOnline: false,
