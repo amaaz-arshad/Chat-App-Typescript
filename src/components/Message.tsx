@@ -3,7 +3,15 @@ import Moment from "react-moment";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import AccordionBody from "react-bootstrap/esm/AccordionBody";
 import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
-import { deleteDoc, doc } from "firebase/firestore";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  onSnapshot,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "../firebase";
 import { Messages } from "../model";
 
@@ -19,15 +27,23 @@ const Message = ({ msg, user1 }: Props) => {
   async function deleteMsg(msgId: string) {
     console.log("delete btn was clicked");
     console.log(msg);
+    setDisplayToggle(!displayToggle);
     const id =
       msg.from > msg.to ? `${msg.from + msg.to}` : `${msg.to + msg.from}`;
     await deleteDoc(doc(db, "messages", id, "chat", msgId));
-    // const list = [...dataList];
-    //   list.splice(index, 1);
-    //   setDataList(list);
-    // const descDoc = doc(db, "descriptions", id);
-    // await deleteDoc(descDoc);
-    setDisplayToggle(!displayToggle);
+    // console.log("msg deleted");
+    // let delid: string;
+    // const q = query(collection(db, "lastMsg"), where("id", "==", msgId));
+    // const querySnapshot = await getDocs(q);
+    // querySnapshot.forEach(async (doc) => {
+    //   // doc.data() is never undefined for query doc snapshots
+    //   console.log("query snapshot executed");
+    //   console.log(doc.id, " => ", doc.data());
+    //   delid = doc.id;
+    // });
+
+    // await deleteDoc(doc(db, "lastMsg", delid));
+
   }
 
   useEffect(() => {

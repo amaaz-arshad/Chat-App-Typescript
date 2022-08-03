@@ -126,7 +126,6 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    // swDev();
     const usersRef = collection(db, "users");
     // create query object
     const q = query(usersRef, where("uid", "not-in", [user1]));
@@ -156,6 +155,8 @@ const Home = () => {
       let msgs: Messages[] = [];
       querySnapshot.forEach((doc) => {
         // console.log({ ...doc.data(), id: doc.id });
+        // console.log("doc data:", doc.data());
+        // msgs.push(doc.data());
         // @ts-ignore
         msgs.push({ ...doc.data(), id: doc.id });
       });
@@ -211,8 +212,12 @@ const Home = () => {
       setIsMsgSending(false);
     }
 
+    // let newId = Date.now().toString();
+    // console.log(newId);
+
     if (text || img) {
       await addDoc(collection(db, "messages", id, "chat"), {
+        // id: newId,
         text,
         from: user1,
         to: user2,
@@ -222,6 +227,7 @@ const Home = () => {
       });
 
       await setDoc(doc(db, "lastMsg", id), {
+        // id: newId,
         text,
         from: user1,
         to: user2,

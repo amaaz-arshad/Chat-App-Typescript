@@ -28,7 +28,7 @@ export interface Messages {
   to: string;
   media?: string;
   text?: string;
-  createdAt?: any;
+  createdAt: any;
   fileName?: string;
 }
 
