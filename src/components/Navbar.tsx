@@ -12,12 +12,13 @@ const Navbar = () => {
 
   const handleSignout = async () => {
     // document.cookie = "uid=; expires=" + new Date(2018, 0, 5).toUTCString();
-    // @ts-ignore
-    await updateDoc(doc(db, "users", auth.currentUser.uid), {
-      isOnline: false,
-    });
-    await signOut(auth);
-    navigate("/login");
+    if (auth.currentUser) {
+      await updateDoc(doc(db, "users", auth.currentUser.uid), {
+        isOnline: false,
+      });
+      await signOut(auth);
+      navigate("/login");
+    }
   };
 
   // useEffect(() => {
