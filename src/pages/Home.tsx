@@ -22,8 +22,7 @@ import {
 import User from "../components/User";
 import MessageForm from "../components/MessageForm";
 import Message from "../components/Message";
-import { sendSignInLinkToEmail, signOut } from "firebase/auth";
-import { CircularProgress } from "@mui/material";
+import { signOut } from "firebase/auth";
 import { getToken } from "firebase/messaging";
 import { getMessaging, onMessage } from "firebase/messaging";
 import { useNavigate } from "react-router-dom";

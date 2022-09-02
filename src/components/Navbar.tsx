@@ -5,10 +5,11 @@ import { signOut } from "firebase/auth";
 import { updateDoc, doc } from "firebase/firestore";
 import { AuthContext } from "../context/auth";
 import { useNavigate } from "react-router-dom";
+import { Tooltip } from "@mui/material";
 
 const Navbar = () => {
   const navigate = useNavigate();
-  const { user } = useContext<any>(AuthContext);
+  const { user } = useContext(AuthContext);
 
   const handleSignout = async () => {
     // document.cookie = "uid=; expires=" + new Date(2018, 0, 5).toUTCString();
@@ -33,7 +34,6 @@ const Navbar = () => {
   //   }, 3600000);
   //   return () => clearTimeout(timer);
   // }, []);
-
   return (
     <nav>
       <h3>
@@ -42,15 +42,21 @@ const Navbar = () => {
       <div>
         {user ? (
           <>
-            <Link className="navlinks" to="/">
-              Chats
-            </Link>
-            <Link className="navlinks" to="/profile">
-              Profile
-            </Link>
-            <button className="btn" onClick={handleSignout}>
-              Logout
-            </button>
+            <Tooltip title="Alt + H" placement="bottom">
+              <Link className="navlinks" to="/">
+                Chats
+              </Link>
+            </Tooltip>
+            <Tooltip title="Alt + P" placement="bottom">
+              <Link className="navlinks" to="/profile">
+                Profile
+              </Link>
+            </Tooltip>
+            <Tooltip title="Alt + L" placement="bottom">
+              <button className="btn" onClick={handleSignout}>
+                Logout
+              </button>
+            </Tooltip>
           </>
         ) : (
           <>
